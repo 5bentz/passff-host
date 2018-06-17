@@ -106,24 +106,24 @@ If this doesn't work, you can link the files yourself. First, change the `path` 
 
 You get one of these error messages? Follow the instructions below!
 
-###### Remove old installations
+##### Remove old installations
 *Inappropriate installations can override another one that could work. So, it is simpler to remove everything and restart from scratch.*
 * Delete any file `passff.json` in the folders `native-messaging-hosts` and `NativeMessagingHosts`
   * For the complete paths of these folders for your OS and browser, see the section above.
 * Verify all `passff.json` are deleted by doing a search.
   * Use your best file searching tool. For example: `find / -type f -name 'passff.json'`
 
-###### Reinstall the host application
+##### Reinstall the host application
 See the section above.
 
-###### Check that the host application is correctly installed
+##### Check that the host application is correctly installed
 * Make sure the file `passff.py` is executable
   * `ls -l /path/to/passff.py`
 * Open `passff.json` and verify `path` is set to the absolute path of the host executable `passff.py`: for example `"path": "/path/to/passff.py"`
 
 #### PassFF's host application is not working and takes 99% CPU
 
-###### Set a correct PATH in the `passff.py` script
+##### Set a correct PATH in the `passff.py` script
 When the PATH variable is not set correctly, `pass` will complain about not finding `getopt` and then loop forever. You can reproduce this behavior on the command line:
 ```
 PATH="$(which bash | xargs dirname)" $(which pass)
