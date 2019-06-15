@@ -146,16 +146,18 @@ def invoke_pass(pass_command: str,
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-V', '--version', action='store_true',
-                        help='Print passff-host version')
+                        help='print passff-host version')
     parser.add_argument('-c', '--pass-command', default=PASS_COMMAND,
-                        help='Executable to use as the "pass" command')
+                        help='executable to use as the "pass" command')
     parser.add_argument('-E', '--env', default=[], action='append',
-                        help='Additional env vars to use in pass process '
+                        help='additional env vars to use in pass process '
                         'environment, supplied in format KEY=VAL')
     parser.add_argument('--charset', default=detect_charset(),
-                        help='Charset to use for stdin/stdout communication')
+                        help='charset to use for stdin/stdout communication '
+                        '(defaults to {})'.format(DEFAULT_CHARSET))
     parser.add_argument('args', nargs=argparse.REMAINDER,
-                        help='arguments dispatched to ')
+                        help='optional arguments dispatched to the pass '
+                        'command')
     args = parser.parse_args()
 
     # If the -V or --version flag was used, just print the passff-host version
