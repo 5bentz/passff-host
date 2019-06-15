@@ -26,9 +26,7 @@ PASS_COMMAND = "pass"
 PASS_COMMAND_ARGS = []
 
 # Any additional environment variables to set when invoking PASS_COMMAND.
-DEFAULT_COMMAND_ENV = {
-    "TREE_CHARSET": "ISO-8859-1"
-}
+DEFAULT_COMMAND_ENV = {}
 
 # The default stdin/stdout charset (if none can be auto-detected).
 DEFAULT_CHARSET = "UTF-8"
