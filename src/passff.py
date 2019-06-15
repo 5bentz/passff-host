@@ -156,7 +156,7 @@ def main():
                         help='charset to use for stdin/stdout communication '
                         '(defaults to {})'.format(DEFAULT_CHARSET))
     parser.add_argument('args', nargs=argparse.REMAINDER,
-                        help='optional arguments dispatched to the pass '
+                        help='options or arguments dispatched to the pass '
                         'command')
     args = parser.parse_args()
 
