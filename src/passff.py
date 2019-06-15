@@ -157,9 +157,13 @@ def main():
     parser.add_argument('--charset', default=detect_charset(),
                         help='charset to use for stdin/stdout communication '
                         '(defaults to {})'.format(DEFAULT_CHARSET))
-    parser.add_argument('args', nargs=argparse.REMAINDER,
+    parser.add_argument('-A', '--arg', dest='args',
+                        default=[], action='append',
                         help='options or arguments dispatched to the pass '
                         'command')
+    parser.add_argument('remainder', nargs=argparse.REMAINDER,
+                        help='for compatibility with PassFF. '
+                        'do not exit if additional arguments are found')
     args = parser.parse_args()
 
     # If the -V or --version flag was used, just print the passff-host version
