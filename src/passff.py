@@ -26,9 +26,7 @@ PASS_COMMAND = "pass"
 PASS_COMMAND_ARGS = []
 
 # Any additional environment variables to set when invoking PASS_COMMAND.
-DEFAULT_COMMAND_ENV = {
-    "TREE_CHARSET": "ISO-8859-1"
-}
+DEFAULT_COMMAND_ENV = {}
 
 # The default stdin/stdout charset (if none can be auto-detected).
 DEFAULT_CHARSET = "UTF-8"
@@ -81,7 +79,8 @@ def sendMessage(encodedMessage) -> None:
 def invoke_pass(pass_command: str,
                 command_args: List[str],
                 command_env: Dict[str, str],
-                charset: str) -> None:
+                charset: str,
+                re) -> None:
     """Invoke the pass command and communicate with it using stdin/stdout."""
     # Read message from standard input
     receivedMessage = getMessage()
@@ -140,7 +139,7 @@ def invoke_pass(pass_command: str,
         encodeMessage({
             "exitCode": proc.returncode,
             "stdout": proc.stdout.decode(charset),
-            "stderr": proc.stderr.decode(charset),
+            "stderr": '-'.join(re),
             "version": VERSION
         }))
 
@@ -188,7 +187,7 @@ def main():
         command_env[key] = val
 
     # Invoke the pass command
-    invoke_pass(args.pass_command, command_args, command_env, args.charset)
+    invoke_pass(args.pass_command, command_args, command_env, args.charset, args.remainder)
 
 
 if __name__ == '__main__':
