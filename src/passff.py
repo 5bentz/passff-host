@@ -159,10 +159,7 @@ def main():
                         default=[], action='append',
                         help='options or arguments dispatched to the pass '
                         'command')
-    parser.add_argument('remainder', nargs=argparse.REMAINDER,
-                        help='for compatibility with PassFF. '
-                        'do not exit if additional arguments are found')
-    args = parser.parse_args()
+    args, _ = parser.parse_known_args()
 
     # If the -V or --version flag was used, just print the passff-host version
     # and exit.
