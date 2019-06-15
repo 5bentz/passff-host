@@ -149,11 +149,13 @@ def main():
                         help='Print passff-host version')
     parser.add_argument('-c', '--pass-command', default=PASS_COMMAND,
                         help='Executable to use as the "pass" command')
-    parser.add_argument('-E', '--env', action='append',
+    parser.add_argument('-E', '--env', default=[], action='append',
                         help='Additional env vars to use in pass process '
                         'environment, supplied in format KEY=VAL')
     parser.add_argument('--charset', default=detect_charset(),
                         help='Charset to use for stdin/stdout communication')
+    parser.add_argument('args', nargs=argparse.REMAINDER,
+                        help='arguments dispatched to ')
     args = parser.parse_args()
 
     # If the -V or --version flag was used, just print the passff-host version
